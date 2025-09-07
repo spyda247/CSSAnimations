@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sequential Border Animation</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .wrapper {
+        max-width: 700px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding: 0 20px;
+      }
+      .wrapper .box {
+        width: 180px;
+        height: 180px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+      }
+      .box h2 {
+        font-size: 13px;
+        margin: 0 auto;
+      }
+      .outer-box {
+        width: 120px;
+        height: 120px;
+        margin: 25px auto;
+        border: 1px solid #ddd;
+        position: relative;
+      }
+      /* inner box only provides the second pseudo-element pair */
+      .inner-box {
+        position: absolute;
+        inset: 0;
+      }
+
+      /* We’ll use TWO levels:
+      1) .outer-box::before and .outer-box::after  = top & right
+      2) inner-box::before   and inner-box::after  = bottom & left
+      That gives us four pseudo-elements total. */
+
+      .outer-box::before,
+      .outer-box::after,
+      .inner-box::before,
+      .inner-box::after {
+        content: '';
+        position: absolute;
+        background-color: black;
+        /*  animation-direction: alternate; */
+      }
+
+      /* TOP (draw line from left ➜ right) */
+      .outer-box::before {
+        top: 0;
+        left: 0;
+        height: 8px;
+        width: 0;
+        animation: drawLineX 1s ease-in-out forwards infinite alternate-reverse; /* no delay */
+      }
+
+      /* RIGHT (draw line from top ➜ bottom) */
+      .outer-box::after {
+        top: 0;
+        right: 0;
+        width: 8px;
+        height: 0;
+        animation: drawLineY 1s ease-in-out forwards infinite alternate;
+        animation-delay: 1s; /* after top finishes */
+      }
+      /* BOTTOM (draw line from right ➜ left for a “traveling” feel) */
+      .inner-box::before {
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 8px;
+        animation: drawLineX 1s ease-in-out forwards infinite alternate-reverse;
+        animation-delay: 2s; /* After both top and right have finished (1s * 2) */
+      }
+      /* LEFT (draw line from bottom ➜ top) */
+      .inner-box::after {
+        bottom: 0;
+        left: 0;
+        width: 8px;
+        height: 0;
+        animation: drawLineY 1s ease forwards infinite alternate;
+        animation-delay: 3s; /* After both top, right and bottom have finished (1s * 3) */
+      }
+      @keyframes drawLineX {
+        from {
+          width: 0;
+          opacity: 0;
+        }
+        to {
+          width: 100%;
+          opacity: 1;
+        }
+      }
+      @keyframes drawLineY {
+        from {
+          height: 0;
+          opacity: 0;
+        }
+        to {
+          height: 100%;
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="box">
+        <h2>Sequential Border Animation</h2>
+        <div class="outer-box">
+          <div class="inner-box"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

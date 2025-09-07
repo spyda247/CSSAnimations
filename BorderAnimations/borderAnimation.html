@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Border Animations</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    h1 {
+      font-size: 18px;
+    }
+    
+    p {
+      font-size: 14px;
+      color: #777;
+      padding: 0 20px;
+      margin-top: -10px;
+    }
+    
+    h2 {
+      font-size: 16px;
+    }
+    
+    .border-wrapper {
+      width: 300px;
+      min-height: 200px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .borderAnim {
+      width: 100px;
+      height: 100px;
+      border: 8px solid black;
+      border-radius: 12px;
+      animation: borderColor 0.8s infinite alternate;
+
+    }
+    
+    .circularAnim {
+      width: 100px;
+      height: 100px;
+      border: 8px solid #ddd;
+      border-radius: 50%;
+      animation: spin 0.5s linear infinite;
+    }
+
+    @keyframes borderColor {
+      0% {
+        border-color: black;
+      }
+      
+      50% {
+        border-color: orangered;
+      }
+      
+      100% {
+        border-color: yellow;
+      }
+    }
+    
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+        border-top-color: red;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Border Animations</h1>
+  <p>
+    CSS borders can be animated using border-color, border-width, or by simulating border-drawing with ::before or ::after
+  </p>
+  <h2>Example 1: Animated Border Color</h2>
+  <div class="border-wrapper">
+    <div class="borderAnim"></div>
+    <div class="circularAnim"></div>
+  </div>
+</body>
+
+</html>

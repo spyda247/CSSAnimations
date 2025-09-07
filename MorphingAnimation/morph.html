@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Square to Circle</title>
+  <style>
+    .morph {
+      width: 100px;
+      height: 100px;
+      background: purple;
+      animation: morphShape 3s infinite alternate;
+    }
+
+    @keyframes morphShape {
+      0%   { border-radius: 0%; }
+      100% { border-radius: 50%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="morph"></div>
+</body>
+</html>

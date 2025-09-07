@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dot {
+  width: 20px;
+  height: 20px;
+  background: dodgerblue;
+  border-radius: 50%;
+  animation: bounce 1s ease-in-out infinite;
+}
+.dot2 {
+  animation-delay: 0.2s;
+}
+.dot3 {
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+}

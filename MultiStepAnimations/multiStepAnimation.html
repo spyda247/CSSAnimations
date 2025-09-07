@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Multistep Animation </title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background: orange;
+      animation: moveBox 4s infinite;
+    }
+    @keyframes moveBox {
+      0% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(100px);
+      }
+      50% {
+        transform: translateY(100px);
+      }
+      75% {
+      100% {
+        transform: translateX(0px);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+</body>
+
+</html>
